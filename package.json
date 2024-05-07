@@ -7,7 +7,8 @@
   "scripts": {
     "build": "swc build ./src -d ./dist --source-maps",
     "watch-build": "swc build ./src -d ./dist --source-maps -w",
-    "dev": "concurrently \"npm run watch-build\" \"node --experimental-modules --es-module-specifier-resolution=node --loader ts-node/esm dist/src/app.js\"",
+    "dev": "npm run watch-build & nodemon --watch dist/src dist/src/app.js",
+    "dev-concurrently": "concurrently \"npm run watch-build\" \"nodemon --watch dist/src dist/src/app.js\"",
     "start": "node dist/src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,6 +22,7 @@
     "@swc/cli": "^0.3.12",
     "@swc/core": "^1.4.17",
     "concurrently": "^8.2.2",
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "nodemon": "^3.1.0"
   }
 }
