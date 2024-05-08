@@ -1,4 +1,4 @@
-# Profesional - Finder backend
+# Profesional Finder backend
 
 Backend for Profesional Finder application
 
