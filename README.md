@@ -24,6 +24,12 @@ docker pull mongodb/mongodb-community-server:latest
 docker run --name "name" -p 28017:27017 -d mongodb/mongodb-community-server:latest
 ```
 
+To start the MongoDB container:
+
+```bash
+docker start profesional_finder_db
+```
+
 ### Linter
 
 We use both [eslint](https://eslint.org/) and [prettier](https://prettier.io/).
@@ -61,7 +67,7 @@ npm run dev
 Output:
 
 ```json
-{ "message": "App listening on port 3000!" }
+{ "level": "info", "message": "App listening on port 3000!" }
 ```
 
 Note: If the server is listening on port 3001 instead of 3000, it might indicate that the environment variables were not properly taken into account. Double-check your configuration to ensure the correct port is being used.

@@ -5,3 +5,7 @@ dist/
 
 # dotenv environment variables file
 .env
+
+
+# File .log
+*.log
