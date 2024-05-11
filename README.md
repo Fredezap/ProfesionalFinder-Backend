@@ -24,6 +24,12 @@ docker pull mongodb/mongodb-community-server:latest
 docker run --name "name" -p 28017:27017 -d mongodb/mongodb-community-server:latest
 ```
 
+### Linter
+
+We use both [eslint](https://eslint.org/) and [prettier](https://prettier.io/).
+
+Please review [VS Code](https://code.visualstudio.com/) plugins at [dev dependencies](package.json).
+
 ## Installation
 
 Create the following files on the `project root`:

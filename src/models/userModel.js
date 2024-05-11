@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const { Schema } = mongoose;
 export const MIN_PASSWORD_LENGTH = 5;
@@ -25,4 +25,4 @@ UserModel.methods.toJSON = function toJSON() {
   return User;
 };
 
-export const User = mongoose.model("User", UserModel);
+export const User = mongoose.model('User', UserModel);
