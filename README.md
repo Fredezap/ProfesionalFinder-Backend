@@ -76,4 +76,6 @@ Note: If the server is listening on port 3001 instead of 3000, it might indicate
 
 ## API docs
 
+Restart your server and see swagger-ui docs at [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
+
 ## License
