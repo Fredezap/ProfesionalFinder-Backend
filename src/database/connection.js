@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import logger from '../utils/logger';
 /* // TODO: Uncomment only for verifying the database connection. Remove once transitioning to domain models begins.
 import { User } from "../models/userModel"; */
 
@@ -22,8 +23,8 @@ export const connectToDatabase = async () => {
     /* // Save the user to the database
     await user.save();
     console.log("Successfully created test user."); */
+    logger.info('Connected to database');
   } catch (error) {
-    // TODO: Add logger
-    console.log(error.stack);
+    logger.error(error?.stack);
   }
 };
