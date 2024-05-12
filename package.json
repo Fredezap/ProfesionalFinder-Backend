@@ -17,7 +17,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.19.2",
-    "mongoose": "^8.3.4",
+    "express-oas-generator": "^1.0.46",
+    "mongoose": "^6.4.6",
     "morgan": "^1.10.0",
     "winston": "^3.13.0"
   },
