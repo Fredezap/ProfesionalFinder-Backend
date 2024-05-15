@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import expressOasGenerator from 'express-oas-generator';
 import dotenv from 'dotenv';
 import logger from 'morgan';
+import cors from 'cors';
 import { router } from './router';
 
 // TODO: add setEnvVariables
@@ -22,6 +23,9 @@ expressOasGenerator.handleResponses(server, {
 });
 
 server.use(logger(process.env.LOGGER_LEVEL));
+
+server.use(cors());
+server.use(express.json());
 
 server.use('/api', router);
 
