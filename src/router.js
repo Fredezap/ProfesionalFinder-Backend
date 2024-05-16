@@ -1,7 +1,6 @@
 import express from 'express';
+import authRouter from './routes/authRouter';
 
 export const router = express.Router();
 
-router.use('/salute', (req, res) => {
-  res.send({ data: 'Hello world!' });
-});
+router.use('/auth', authRouter);
