@@ -6,10 +6,12 @@ const logger = winston.createLogger({
   transports: [
     new winston.transports.Console(),
     new winston.transports.File({
-      filename: process.env.LOGGER_ERROR_FILE,
+      filename: process.env.LOGGER_ERROR_FILE || 'error.log',
       level: 'error',
     }),
-    new winston.transports.File({ filename: process.env.LOGGER_FILE }),
+    new winston.transports.File({
+      filename: process.env.LOGGER_FILE || 'combined.log',
+    }),
   ],
 });
 
