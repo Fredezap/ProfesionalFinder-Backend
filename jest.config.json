@@ -1,0 +1,16 @@
+{
+  "testEnvironment": "node",
+  "setupFilesAfterEnv": ["./jest.setup.js"],
+  "transform": {
+    "^.+\\.(t|j)sx?$": "@swc/jest"
+  },
+  "testPathIgnorePatterns": ["/node_modules/"],
+  "testMatch": [
+    "**/__tests__/**/*.[jt]s?(x)",
+    "**/?(*.)+(spec|test).[tj]s?(x)"
+  ],
+  "testEnvironmentVariables": {
+    "NODE_ENV": "test",
+    "DOTENV_CONFIG_PATH": ".env.test"
+  }
+}
