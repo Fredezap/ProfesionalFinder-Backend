@@ -6,8 +6,7 @@ const registerUser = async (req, res, next) => {
   try {
     const user = await userService.registerUser(req.body);
 
-    res.status(StatusCodes.OK).send(user);
-    return next();
+    return res.status(StatusCodes.CREATED).send({ user });
   } catch (err) {
     return next(err);
   }
