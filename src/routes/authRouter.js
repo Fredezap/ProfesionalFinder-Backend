@@ -6,6 +6,7 @@ import validateUniqueEmail from '../middlewares/auth/validations/validateUniqueE
 import validateUniqueUsername from '../middlewares/auth/validations/validateUniqueUsername';
 
 import registerUser from '../middlewares/auth/registerUser';
+import auhtUser from '../middlewares/auth/auhtUser';
 
 const authRouter = express.Router();
 
@@ -17,5 +18,9 @@ const registerValidations = runValidations([
 ]);
 
 authRouter.post('/register', registerValidations, registerUser);
+
+const authValidations = runValidations([validateEmailFormat, validatePassword]);
+
+authRouter.post('/', authValidations, auhtUser);
 
 export default authRouter;
