@@ -14,9 +14,18 @@ const getMockDataUserWithout = ({ missing = [] }) => {
   return data;
 };
 
+const getFakeDataByType = (type) => {
+  const generator = getMockDataUser()[type];
+  if (!generator) {
+    throw new Error(`Unknown mock data type: ${type}`);
+  }
+  return generator;
+};
+
 const userData = {
   getMockDataUser,
   getMockDataUserWithout,
+  getFakeDataByType,
 };
 
 export default userData;

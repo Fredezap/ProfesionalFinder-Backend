@@ -7,7 +7,8 @@ import cors from 'cors';
 import { router } from './router';
 
 // TODO: add setEnvVariables
-dotenv.config();
+const environment = process.env.NODE_ENV ? `.${process.env.NODE_ENV}` : '';
+dotenv.config({ path: `.env${environment}` });
 
 const PRODUCTION = 'production';
 const TEST = 'test';
