@@ -10,6 +10,7 @@ import { router } from './router';
 dotenv.config();
 
 const PRODUCTION = 'production';
+const TEST = 'test';
 
 const server = express();
 
@@ -22,7 +23,9 @@ expressOasGenerator.handleResponses(server, {
   alwaysServeDocs: true,
 });
 
-server.use(logger(process.env.LOGGER_LEVEL));
+if (process.env.NODE_ENV !== TEST) {
+  server.use(logger(process.env.LOGGER_LEVEL));
+}
 
 server.use(cors());
 server.use(express.json());

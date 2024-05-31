@@ -1,7 +1,5 @@
 import mongoose from 'mongoose';
 import logger from '../utils/logger';
-/* // TODO: Uncomment only for verifying the database connection. Remove once transitioning to domain models begins.
-import { User } from "../models/userModel"; */
 
 export const connectToDatabase = async () => {
   try {
@@ -13,18 +11,12 @@ export const connectToDatabase = async () => {
       { useNewUrlParser: true, useUnifiedTopology: true },
     );
 
-    /* // Create a test user
-    const user = new User({
-      username: "testuser",
-      email: "test@example.com",
-      password: "password123",
-    }); */
-
-    /* // Save the user to the database
-    await user.save();
-    console.log("Successfully created test user."); */
-    logger.info('Connected to database');
+    logger.info(`Connected to database: ${MONGO_DATABASE}`);
   } catch (error) {
     logger.error(error?.stack);
   }
 };
+
+export const dropDatabase = () => mongoose.connection.dropDatabase();
+
+export const closeConnection = () => mongoose.connection.close();
