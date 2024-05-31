@@ -1,10 +1,9 @@
 import axios from 'axios';
 import { StatusCodes } from 'http-status-codes';
-import { startServer, stopServer } from '../utils/server';
 import errorCodes from '../../src/constants/errorCodes';
 import factoriesUser from '../utils/factories/user';
 
-const { describe, it, beforeAll, afterAll } = require('@jest/globals');
+const { describe, it, beforeEach, afterEach } = require('@jest/globals');
 const instance = axios.create({
   baseURL: process.env.BASE_URL,
 });
@@ -19,9 +18,8 @@ const {
 
 let user;
 
-describe('Auth API', () => {
-  beforeAll(async () => {
-    await startServer();
+describe('Auth Register API', () => {
+  beforeEach(async () => {
     user = await factoriesUser.create();
   });
   describe('POST /api/auth/register', () => {
@@ -38,9 +36,10 @@ describe('Auth API', () => {
       } catch (error) {
         const { data, status } = error.response;
         expect(status).toBe(StatusCodes.UNPROCESSABLE_ENTITY);
-        errorsAll.forEach((error, index) => {
-          expect(data.errors[index]).toHaveProperty('msg', error);
-        });
+        expect(data.errors).toEqual(expect.any(Array));
+        for (let index = 0; index < data.errors.length; index++) {
+          expect(data.errors[index]).toHaveProperty('msg', errorsAll[index]);
+        }
       }
     });
 
@@ -139,11 +138,11 @@ describe('Auth API', () => {
       const { _id, ...userWithoutIdMongo } = response.data.user;
       const { password, ...userDataWithoutPassword } = userData;
       expect(_id).toBeTruthy();
+      expect(userWithoutIdMongo?.password).toBeFalsy();
       expect(userWithoutIdMongo).toEqual(userDataWithoutPassword);
     });
   });
-  afterAll(async () => {
+  afterEach(async () => {
     await factoriesUser.removeAll();
-    await stopServer();
   });
 });

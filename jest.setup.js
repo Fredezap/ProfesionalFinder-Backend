@@ -1,21 +1,21 @@
-import dotenv from 'dotenv';
 import {
   connectToDatabase,
   dropDatabase,
   closeConnection,
 } from './src/database/connection';
-
-dotenv.config({ path: '.env.test' });
+import { startServer, stopServer } from './test/utils/server';
 
 const setup = async () => {
+  await startServer();
   await connectToDatabase();
 };
 
 const teardown = async () => {
+  await stopServer();
   await dropDatabase();
   await closeConnection();
 };
 
-setup();
+beforeAll(setup);
 
 afterAll(teardown);
