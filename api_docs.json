@@ -1,0 +1,164 @@
+{
+  "definitions": {
+    "User": {
+      "title": "User",
+      "required": [
+        "username",
+        "email",
+        "password",
+        "state",
+        "city",
+        "address",
+        "postalCode",
+        "token",
+        "isVerifyed"
+      ],
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        },
+        "verificationToken": {
+          "type": "string",
+          "required": false
+        },
+        "isVerifyed": {
+          "type": "boolean"
+        },
+        "_id": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "info": {
+    "title": "profesionalfinder-backend",
+    "version": "1.0.0",
+    "license": {
+      "name": "ISC"
+    },
+    "description": "Specification JSONs: [v2](/api-spec/v2), [v3](/api-spec/v3)."
+  },
+  "paths": {
+    "/api/auth/register": {
+      "post": {
+        "summary": "/api/auth/register",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": []
+      }
+    },
+    "/api/auth/login": {
+      "post": {
+        "summary": "/api/auth/login",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "_id": {
+                  "type": "string",
+                  "example": "669d66015bc7971ef74a03ce"
+                },
+                "username": {
+                  "type": "string",
+                  "example": "Federico"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "fredez1991@gmail.com"
+                },
+                "state": {
+                  "type": "string",
+                  "example": "Neuquen"
+                },
+                "city": {
+                  "type": "string",
+                  "example": "Plottier"
+                },
+                "address": {
+                  "type": "string",
+                  "example": "Jujuy 329"
+                },
+                "postalCode": {
+                  "type": "string",
+                  "example": "8316"
+                },
+                "token": {
+                  "type": "string",
+                  "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZyZWRlejE5OTFAZ21haWwuY29tIiwidXNlcm5hbWUiOiJGZWRlcmljbyIsImlhdCI6MTcyMTU5MTI5NywiZXhwIjoxNzI0MjE5Mjk3fQ.tyTnYiVKrKDKL1dX2OdI3RpUqlytpvqQYg0EHvac1_E"
+                },
+                "isVerifyed": {
+                  "type": "boolean",
+                  "example": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errors": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": [
+                    {
+                      "msg": "CREDENCIALES_INVALIDAS"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "tags": [],
+        "produces": [
+          "application/json"
+        ]
+      }
+    }
+  },
+  "swagger": "2.0",
+  "tags": [
+    {
+      "name": "User"
+    }
+  ]
+}
