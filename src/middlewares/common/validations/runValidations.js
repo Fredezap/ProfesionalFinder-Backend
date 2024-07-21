@@ -8,7 +8,6 @@ const runValidations = (validations) => async (req, res, next) => {
   if (errors.isEmpty()) {
     return next();
   }
-
   return res
     .status(StatusCodes.UNPROCESSABLE_ENTITY)
     .json({ errors: errors.array() });

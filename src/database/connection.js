@@ -3,6 +3,7 @@ import logger from '../utils/logger';
 
 export const connectToDatabase = async () => {
   try {
+
     const { MONGO_HOST, MONGO_PORT, MONGO_DATABASE } = process.env;
 
     await mongoose.connect(
@@ -13,7 +14,7 @@ export const connectToDatabase = async () => {
 
     logger.info(`Connected to database: ${MONGO_DATABASE}`);
   } catch (error) {
-    logger.error(error?.stack);
+    logger.error(`Error connecting to database: ${error?.stack}`);
   }
 };
 
